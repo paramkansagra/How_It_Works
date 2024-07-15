@@ -1,15 +1,18 @@
-import FrameComponent1 from "../components/FrameComponent1";
-import FrameComponent from "../components/FrameComponent";
-import CryptoFlow from "../components/CryptoFlow";
+import TabComponent from "../components/tabComponent";
 
 const Desktop = () => {
+  const data: Map<string, Array<string>> = new Map();
+
+  data.set("ab_statements", ["abc", "def", "ghi", "jkl", "mno"]);
+  data.set("view_statements", ["abc", "def", "ghi", "jkl", "mno"]);
+  data.set("ddl_statements", ["abc", "def", "ghi", "jkl", "mno"]);
+  data.set("error_statements", ["abc", "def", "ghi", "jkl", "mno"]);
+
   return (
-    <div className="w-full relative bg-white overflow-hidden flex flex-col items-end justify-start pt-[50px] px-[197px] pb-20 box-border gap-[57px] leading-[normal] tracking-[normal] mq925:gap-[28px] mq925:pl-[49px] mq925:pr-[49px] mq925:box-border mq1400:pl-[98px] mq1400:pr-[98px] mq1400:box-border mq450:pl-5 mq450:pr-5 mq450:box-border">
-      <FrameComponent1 />
-      <section className="self-stretch flex flex-col items-end justify-start gap-[4px] max-w-full">
-        <FrameComponent />
-        <CryptoFlow />
-      </section>
+    <div>
+      {Array.from(data.keys()).map((element) => (
+        <TabComponent element={element} value={data.get(element)} />
+      ))}
     </div>
   );
 };
